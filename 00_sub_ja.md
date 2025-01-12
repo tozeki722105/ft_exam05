@@ -1,53 +1,69 @@
-課題名：cpp_module_00
-提出ファイル：Warlock.cpp Warlock.hpp
---------------------------------------------------------------------------------
+## C++ モジュール00課題: Warlockクラスの作成
 
-Warlockクラスを作成します。Coplienの形式に従う必要があります。
+**課題名:** cpp_module_00
+**提出ファイル:** Warlock.cpp Warlock.hpp
 
-以下のprivate属性を持ちます。
-* name (string)
-* title (string)
+WarlockクラスをCoplienの形式に従って作成してください。
 
-これらはprivateなので、以下のゲッターを作成します。
-* getName：const stringへの参照を返す
-* getTitle：const stringへの参照を返す
+### プライベート属性
 
-これらの関数はどちらもconstなWarlockオブジェクトで呼び出せる必要があります。
+以下のプライベート属性を持たせます。
+
+* name (string): 名前
+* title (string): 肩書き
+
+これらはプライベートなので、以下のゲッターを用意します。
+
+* getName(): const stringへの参照を返す
+* getTitle(): const stringへの参照を返す
+
+これらの関数はどちらもconstなWarlockオブジェクトに対して呼び出し可能でなければなりません。
 
 以下のセッターを作成します。
-* setTitle：voidを返し、const stringへの参照を引数にとる
 
-Warlockは、Coplienの形式で必要なものに加えて、名前と肩書きをこの順序で引数にとるコンストラクタも持ちます。Warlockはコピー、コピーコンストラクタによるインスタンス化、または名前と肩書きなしのインスタンス化はできません。
+* setTitle(const string&): voidを返し、const stringへの参照を引数にとる
 
-例：
+Warlockクラスは、Coplienの形式で必要なものの他に、名前と肩書きを引数にとるコンストラクタを持つ必要があります。Warlockクラスはコピー、コピーコンストラクタによるインスタンス化、名前と肩書きなしのインスタンス化ができません。
 
+例:
+
+```c++
 Warlock bob;                            //コンパイルエラー
 Warlock bob("Bob", "the magnificent");  //コンパイルOK
 Warlock jim("Jim", "the nauseating");   //コンパイルOK
 bob = jim;                              //コンパイルエラー
 Warlock jack(jim);                      //コンパイルエラー
+```
 
-作成時に、Warlockは以下のように言います。
+Warlockオブジェクトが作成された際に、以下のメッセージを出力します。
 
-<NAME>: 今日もお暇そうですね。
+```
+<NAME>: This looks like another boring day.
+```
 
-もちろん、<NAME>、<TITLE>などのプレースホルダーを使用する場合は、適切な値に置き換えてください。<と>は不要です。
+`<NAME>`のようなプレースホルダーは、適切な値に置き換えてください（`<` と `>` は不要）。
 
-死ぬとき、彼は以下のように言います。
+Warlockオブジェクトが破棄される際に、以下のメッセージを出力します。
 
-<NAME>: 私の仕事は終わりました！
+```
+<NAME>: My job here is done!
+```
 
-Warlockは、自分の能力を誇示しながら自己紹介できる必要があります。
+Warlockは自己紹介する機能も必要です。
 
-そのため、以下の関数を作成します。
+以下の関数を記述してください。
+
 * void introduce() const;
 
-以下のように表示する必要があります。
+この関数は以下のメッセージを表示します。
 
-<NAME>: 私は<NAME>、<TITLE>です！
+```
+<NAME>: I am <NAME>, <TITLE>!
+```
 
-テスト用のmain関数とその出力例を以下に示します。
+テスト用のmain関数と実行結果の例:
 
+```c++
 int main()
 {
   Warlock const richard("Richard", "Mistress of Magma");
@@ -63,14 +79,20 @@ int main()
 
   return (0);
 }
+```
 
+```
 ~$ ./a.out | cat -e
-Richard: 今日もお暇そうですね。$
-Richard: 私はRichard、Mistress of Magmaです！$
+Richard: This looks like another boring day.$
+Richard: I am Richard, Mistress of Magma!$
 Richard - Mistress of Magma$
-Jack: 今日もお暇そうですね。$
-Jack: 私はJack、the Longです！$
-Jack: 私はJack、the Mightyです！$
-Jack: 私の仕事は終わりました！$
-Richard: 私の仕事は終わりました！$
+Jack: This looks like another boring day.$
+Jack: I am Jack, the Long!$
+Jack: I am Jack, the Mighty!$
+Jack: My job here is done!$
+Richard: My job here is done!$
 ~$
+```
+
+
+This assignment asks you to create a `Warlock` class in C++ following Coplien's form.  The class should manage a name and title, prevent copying, and provide specific output upon construction and destruction.  Getters for the name and title (usable on const objects) and a setter for the title are required, along with an `introduce()` method for the Warlock to announce themselves.  The provided code examples illustrate expected behavior and output.
