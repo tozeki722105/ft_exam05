@@ -55,7 +55,7 @@ void Warlock::learnSpell(ASpell *spell)
 {
 	if (!spell)
 		return;
-	_map.insert(make_pair(spell->getName(), spell));
+	_map.insert(make_pair(spell->getName(), spell->clone()));
 }
 
 void Warlock::forgetSpell(const std::string &spellName)
